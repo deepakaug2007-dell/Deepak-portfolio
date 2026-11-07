@@ -1,8 +1,8 @@
 *{
     padding: 0;
     margin: 0;
-  
-    
+    box-sizing: border-box;
+
 }
 html{
     font-size: 10px;
@@ -164,7 +164,7 @@ img{
 
 #header .nav-list ul{
     list-style: none;
-    position: absolute;
+    position: fixed;
     background-color: rgb(31, 30, 30);
     width: 100vw;
     height: 100vh;
@@ -439,7 +439,8 @@ img{
 
 #about .col-left{
     width: 250px;
-    height: 360px;
+    height: auto;
+    flex-shrink: 0;
 }
 #about .col-right{
     width: 100%;
@@ -463,10 +464,18 @@ img{
 }
 
 #about .col-left .about-img{
-    height: 100%;
     width: 100%;
+    aspect-ratio: 1086 / 1448;
     position: relative;
     border: 10px solid black;
+}
+
+#about .col-left .about-img img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    object-fit: cover;
 }
 
 #about .col-left .about-img::after{
@@ -492,6 +501,7 @@ img{
 
 #contact .contact-items{
     width: 400px;
+    max-width: 100%;
 }
 #contact .contact-item{
     width: 80%;
@@ -641,12 +651,12 @@ img{
         flex-direction: row;
     }
     #about .col-left{
-        width: 600px;
-        height: 400px;
+        width: 250px;
+        height: auto;
         padding-left: 60px;
     }
     #about .about .col-left .about-img::after{
-        left: -45;
+        left: -45px;
         top: 34px;
         height: 98%;
         width: 98%;
@@ -719,9 +729,13 @@ img{
         }
         
         #services .service-bottom .service-item {
-            flex-basis: 22%;
-            margin: 1.5%;
+            box-sizing: border-box;
+            flex-basis: calc(25% - 20px);
+            margin: 10px;
+        }
+        #services .service-bottom {
+            align-items: stretch;
         }
      }
 
-}     
+}  
